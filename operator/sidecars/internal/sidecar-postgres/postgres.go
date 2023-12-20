@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/sethvargo/go-password/password"
-	v1 "github.com/zondax/tororu-operator/operator/common/v1"
+	v1 "github.com/zondax/vault-k8s-canister/operator/common/v1"
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v2"
 )

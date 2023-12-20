@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/zondax/tororu-operator/operator/common"
-	v1 "github.com/zondax/tororu-operator/operator/common/v1"
+	"github.com/zondax/vault-k8s-canister/operator/common"
+	v1 "github.com/zondax/vault-k8s-canister/operator/common/v1"
 	"go.uber.org/zap"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

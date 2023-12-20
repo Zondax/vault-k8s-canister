@@ -2,7 +2,7 @@ package sidecarPostgres
 
 import (
 	"github.com/zondax/sidecars/internal/conf"
-	"github.com/zondax/tororu-operator/operator/common"
+	"github.com/zondax/vault-k8s-canister/operator/common"
 	"go.uber.org/zap"
 )
 

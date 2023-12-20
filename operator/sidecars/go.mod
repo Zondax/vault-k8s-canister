@@ -4,13 +4,13 @@ go 1.21.0
 
 toolchain go1.21.4
 
-replace github.com/zondax/tororu-operator v0.0.0 => ../
+replace github.com/zondax/vault-k8s-canister/operator v0.0.0 => ../
 
 require (
 	github.com/sethvargo/go-password v0.2.0
 	github.com/spf13/cobra v1.7.0
 	github.com/zondax/golem v0.7.0
-	github.com/zondax/tororu-operator v0.0.0
+	github.com/zondax/vault-k8s-canister/operator v0.0.0
 	go.uber.org/zap v1.24.0
 	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/apimachinery v0.26.3

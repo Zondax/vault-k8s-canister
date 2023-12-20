@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/zondax/tororu-operator/operator/common"
+	"github.com/zondax/vault-k8s-canister/operator/common"
 )
 
 func init() {
