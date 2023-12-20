@@ -1,3 +1,8 @@
+---
+title: "Architecture"
+sidebar_position: 1
+---
+
 # Project Modules Architecture
 
 Primarily there's two major kind of components to this part of the project.

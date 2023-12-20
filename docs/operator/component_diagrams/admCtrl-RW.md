@@ -1,4 +1,8 @@
-# Admission controller RW Request
+---
+title: "Admission controller RW Request"
+sidebar_position: 4
+---
+
 
 ```mermaid
 sequenceDiagram

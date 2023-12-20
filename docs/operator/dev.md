@@ -1,6 +1,11 @@
+---
+title: "Development"
+sidebar_position: 3
+---
+
 # Dev Setup
 
-Please have a look the sequence diagrams in `/docs` to learn more about the high level design of this project.
+Please have a look the sequence diagrams in `components_diagrams` folder to learn more about the high level design of this project.
 
 ## Pre-requisites
 
