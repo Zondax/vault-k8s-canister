@@ -9,7 +9,7 @@ Please have a look the sequence diagrams in `/docs` to learn more about the high
    - [minikube](https://minikube.sigs.k8s.io/docs/start/) (preferred)
    - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
    - [k3d](https://k3d.io/v5.6.0/)
-1. [ngrok](https://ngrok.com/download) for port forwarding
+1. [cloudflared](https://github.com/cloudflare/cloudflared) for port forwarding
 1. [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) to manage the local cluster.
 1. [Make](https://www.gnu.org/software/make/) the build automation tool - most likely you will already have it but just in case.
 1. [Golang](https://go.dev/doc/install)
@@ -23,12 +23,7 @@ Please have a look the sequence diagrams in `/docs` to learn more about the high
 
 ### Running local
 1. Store the cluster config at `~/.kube/config`
-1. Start ngrok tunnel `make tunnel-adm-controller` and get the tunnel url:
-
-   ```bash
-   curl -s http://localhost:4040/api/tunnels | jq '.tunnels[0].public_url'
-   ```
-
+1. Start cloudflared tunnel `make tunnel-adm-controller` and get the tunnel url from output file
 1. Update the URL in `k8s/mock2/mutating-webhook.yaml`
 1. Apply `k8s/mock2/mutating-webhook.yaml` using kubectl on your local cluster
 1. Start the operators and adm_controller through `make run`
@@ -37,11 +32,7 @@ Please have a look the sequence diagrams in `/docs` to learn more about the high
 
 ### Running as chart
 
-1. Start ngrok tunnel `make tunnel-icp` and get the tunnel url:
-
-   ```bash
-   curl -s http://localhost:4040/api/tunnels | jq '.tunnels[0].public_url'
-   ```
+1. Start cloudflared tunnel `make tunnel-icp` and get the tunnel url:
 1. Update the URL in `tororu-operator` helm chart values, under `config.icpNodeUrl`
 1. Update the canister id in `tororu-operator` helm chart values, under `config.canisterId`
 1. Start the operators and adm_controller through `make install-chart`
