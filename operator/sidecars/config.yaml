@@ -1,0 +1,3 @@
+databases:
+  - name: zevm_mainnet
+    user: prateek

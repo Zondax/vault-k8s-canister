@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-server-svc 
+spec:
+  selector:
+    app: postgres-server-a
+  clusterIP: None  
+  ports:
+    - name: http
+      port: 5432
+      targetPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-client-svc
+spec:
+  selector:
+    app: postgres-client-svc
+  clusterIP: None  
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

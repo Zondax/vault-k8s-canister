@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "tororu-operator.fullname" . }}
+rules:
+  - apiGroups: ["", "zondax.io", "rbac.authorization.k8s.io"]
+    resources: ["pods", "tororu-resources", "secrets", "serviceaccounts", "roles", "rolebindings"]
+    verbs: ["*"]

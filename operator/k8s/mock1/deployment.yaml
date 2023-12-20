@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-a-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+      annotations:
+        tororu.io/managed: "true"
+        tororu.io/hash: "19355644b3d0d65a1a9e0a6c9e3cca2c"
+    spec:
+      containers:
+        - name: ubuntu-container
+          image: ubuntu:latest
+          command: ["/bin/bash", "-c", "sleep infinity"]
+          env:
+            - name: SECRET_1
+              valueFrom:
+                secretKeyRef:
+                  name: example-secret
+                  key: SECRET_1
+            - name: SECRET_2
+              valueFrom:
+                secretKeyRef:
+                  name: example-secret
+                  key: SECRET_2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-b-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+      annotations:
+        tororu.io/hash: 19355644b3d0d65a1a9e0a6c9e3cca2c
+    spec:
+      containers:
+        - name: ubuntu-container
+          image: ubuntu:latest
+          command: ["/bin/bash", "-c", "sleep infinity"]
+          volumeMounts:
+            - name: secret-volume
+              mountPath: /etc/secrets
+              readOnly: true
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: example-secret

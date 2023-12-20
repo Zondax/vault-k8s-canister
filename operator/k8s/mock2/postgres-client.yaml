@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-client
+  labels:
+    app: postgres-client
+spec:
+  replicas: 1
+  serviceName: postgres-client-svc
+  selector:
+    matchLabels:
+      app: postgres-client
+  template:
+    metadata:
+      labels:
+        app: postgres-client
+      annotations:
+        tororu.zondax.io/managed: "true"
+        tororu.zondax.io/secret-ro: "default/postgres-user-prateek,default/postgres-user-juan"
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu:mantic
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/bash", "-c", "while true; do echo 'Hello tororu!'; sleep 30; done"]
+        env:
+          - name: PRATEEK_PASS
+            value: "<default/postgres-user-prateek>"
+          - name: JUAN_PASS
+            value: "<default/postgres-user-juan>"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

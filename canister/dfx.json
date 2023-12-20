@@ -1,0 +1,38 @@
+{
+  "canisters": {
+    "vault_poc_backend": {
+      "candid": "src/vault_poc_backend/vault_poc_backend.did",
+      "package": "vault_poc_backend",
+      "type": "rust"
+    },
+    "vault_poc_frontend": {
+      "frontend": {
+        "entrypoint": "src/vault_poc_frontend/src/index.html"
+      },
+      "source": [
+        "src/vault_poc_frontend/assets",
+        "dist/vault_poc_frontend/"
+      ],
+      "type": "assets"
+    },
+    "internet_identity": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "frontend": {}
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

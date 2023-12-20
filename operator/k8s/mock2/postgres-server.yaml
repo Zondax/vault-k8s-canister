@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-server-a
+  labels:
+    app: postgres-server-a
+spec:
+  serviceName: postgres-server-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-server-a
+  template:
+    metadata:
+      labels:
+        app: postgres-server-a
+      annotations:
+        tororu.zondax.io/managed: "true"
+        tororu.zondax.io/secret-rw: "default/postgres-user-prateek,default/postgres-user-juan"
+    spec:
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+      containers:
+        - name: postgres-server
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          image: postgres:16rc1-alpine3.18
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "mysecretpassword"
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data # Adjust the mount path as needed

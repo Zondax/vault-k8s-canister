@@ -1,0 +1,5 @@
+.idea
+output/
+./tororu-operator
+tmp
+.DS_Store

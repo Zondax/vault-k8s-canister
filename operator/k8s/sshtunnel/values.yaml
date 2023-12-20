@@ -1,0 +1,11 @@
+image:
+  name: "zondax/golem-dev"
+  tag: "main"
+  pullPolicy: "Always"
+
+nodePorts:
+  # Keep this node port to allow SSH access to the pod
+  ssh:
+    port: 2222
+    targetPort: 22
+    nodePort: 31022

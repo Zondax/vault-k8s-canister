@@ -1,0 +1,21 @@
+# mutating-webhook.yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: webhook.zondax.io
+  annotations:
+    tororu.io/hash: "404b6581fc5d81f3e05b1a25b5df269c"
+webhooks:
+  - name: webhook.zondax.io
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    clientConfig:
+      url:  https://7031-2a09-bac5-94-1b9-00-2c-d4.ngrok.io
+    rules:
+      - operations: ["CREATE", "UPDATE"]
+        apiGroups: [""]
+        apiVersions: ["v1"]
+        resources: ["pods"]
+        #    failurePolicy: Fail
+    failurePolicy: Ignore
+    timeoutSeconds: 10

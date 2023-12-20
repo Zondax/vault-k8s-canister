@@ -1,0 +1,62 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  # name must match the spec fields below, and be in the form: <plural>.<group>
+  name: tororu-resources.zondax.io
+spec:
+  # group name to use for REST API: /apis/<group>/<version>
+  group: zondax.io
+  # list of versions supported by this CustomResourceDefinition
+  versions:
+    - name: v1
+      # Each version can be enabled/disabled by Served flag.
+      served: true
+      # One and only one version must be marked as the storage version.
+      # TODO: make fields optional which will be overriden
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            lastUpdated:
+              type: string
+            podsRestartRequired:
+              type: boolean
+            approved:
+              type: boolean
+            secret:
+              type: string
+            consumers:
+              type: object
+              properties:
+                rw:
+                  type: string
+                ro:
+                  type: array
+                  items:
+                    type: string
+            spec:
+              type: object
+              required:
+                - "kind"
+                - "rotate"
+                - "config"
+              properties:
+                kind:
+                  type: string
+                rotate:
+                  type: integer
+                config:
+                  type: string
+  # either Namespaced or Cluster
+  scope: Namespaced
+  names:
+    # plural name to be used in the URL: /apis/<group>/<version>/<plural>
+    plural: tororu-resources
+    # singular name to be used as an alias on the CLI and for display
+    singular: tororu-resource
+    # kind is normally the CamelCased singular type. Your resource manifests use this.
+    kind: TororuResource
+    # shortNames allow shorter string to match your resource on the CLI
+    shortNames:
+      - tres

@@ -1,0 +1,17 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: golem
+          ports:
+            - name: ssh
+              containerPort: 2222
+              protocol: TCP
+          volumeMounts:
+            - name: ssh-key-volume
+              mountPath: /root/.ssh/authorized_keys
+              subPath: authorized_keys
+      volumes:
+        - name: ssh-key-volume
+          configMap:
+            name: ssh-key-configmap

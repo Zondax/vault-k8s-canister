@@ -1,1 +1,1 @@
-# vault-k8s-canister
+# Vault K8S Canister
