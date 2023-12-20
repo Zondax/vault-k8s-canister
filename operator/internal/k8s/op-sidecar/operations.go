@@ -2,7 +2,7 @@ package operator
 
 import (
 	"context"
-	"github.com/zondax/tororu-operator/operator/common"
+	"github.com/zondax/vault-k8s-canister/operator/common"
 
 	"go.uber.org/zap"
 	corev1 "k8s.io/api/core/v1"

@@ -1,4 +1,4 @@
-module github.com/zondax/tororu-operator
+module github.com/zondax/vault-k8s-canister/operator
 
 go 1.21.0
 

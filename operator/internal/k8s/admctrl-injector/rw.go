@@ -3,8 +3,8 @@ package admctrl_injector
 import (
 	"context"
 	"fmt"
-	common2 "github.com/zondax/tororu-operator/operator/common"
-	"github.com/zondax/tororu-operator/operator/common/v1"
+	common2 "github.com/zondax/vault-k8s-canister/operator/common"
+	"github.com/zondax/vault-k8s-canister/operator/common/v1"
 	"strconv"
 	"strings"
 

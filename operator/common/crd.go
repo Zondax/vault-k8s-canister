@@ -3,7 +3,7 @@ package common
 import (
 	"context"
 	"fmt"
-	v12 "github.com/zondax/tororu-operator/operator/common/v1"
+	v12 "github.com/zondax/vault-k8s-canister/operator/common/v1"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )

@@ -3,7 +3,7 @@ package admctrl_injector
 import (
 	"context"
 	"fmt"
-	common2 "github.com/zondax/tororu-operator/operator/common"
+	common2 "github.com/zondax/vault-k8s-canister/operator/common"
 	"strings"
 
 	"github.com/samber/lo"

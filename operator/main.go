@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/zondax/golem/pkg/cli"
-	"github.com/zondax/tororu-operator/operator/internal/commands"
-	"github.com/zondax/tororu-operator/operator/internal/conf"
-	"github.com/zondax/tororu-operator/operator/internal/version"
+	"github.com/zondax/vault-k8s-canister/operator/internal/commands"
+	"github.com/zondax/vault-k8s-canister/operator/internal/conf"
+	"github.com/zondax/vault-k8s-canister/operator/internal/version"
 )
 
 func main() {

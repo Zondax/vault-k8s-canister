@@ -2,7 +2,7 @@ package manager
 
 import (
 	"github.com/zondax/golem/pkg/utils"
-	"github.com/zondax/tororu-operator/operator/internal/conf"
+	"github.com/zondax/vault-k8s-canister/operator/internal/conf"
 	"go.uber.org/zap"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"

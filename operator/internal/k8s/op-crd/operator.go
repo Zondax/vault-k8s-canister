@@ -3,10 +3,10 @@ package operator
 import (
 	"context"
 	"github.com/samber/lo"
-	"github.com/zondax/tororu-operator/operator/common"
-	v12 "github.com/zondax/tororu-operator/operator/common/v1"
-	"github.com/zondax/tororu-operator/operator/internal/conf"
-	manager2 "github.com/zondax/tororu-operator/operator/internal/k8s/manager"
+	"github.com/zondax/vault-k8s-canister/operator/common"
+	v12 "github.com/zondax/vault-k8s-canister/operator/common/v1"
+	"github.com/zondax/vault-k8s-canister/operator/internal/conf"
+	manager2 "github.com/zondax/vault-k8s-canister/operator/internal/k8s/manager"
 	"time"
 
 	"go.uber.org/zap"

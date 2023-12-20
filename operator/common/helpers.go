@@ -3,7 +3,7 @@ package common
 import (
 	"context"
 	"fmt"
-	icp2 "github.com/zondax/tororu-operator/operator/common/icp"
+	icp2 "github.com/zondax/vault-k8s-canister/operator/common/icp"
 	"strings"
 
 	"go.uber.org/zap"

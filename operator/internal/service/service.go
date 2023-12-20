@@ -3,10 +3,10 @@ package service
 import (
 	"github.com/zondax/golem/pkg/metrics"
 	"github.com/zondax/golem/pkg/runner"
-	"github.com/zondax/tororu-operator/operator/internal/conf"
-	"github.com/zondax/tororu-operator/operator/internal/k8s/admctrl-injector"
-	operatorCRD "github.com/zondax/tororu-operator/operator/internal/k8s/op-crd"
-	operatorSidecar "github.com/zondax/tororu-operator/operator/internal/k8s/op-sidecar"
+	"github.com/zondax/vault-k8s-canister/operator/internal/conf"
+	"github.com/zondax/vault-k8s-canister/operator/internal/k8s/admctrl-injector"
+	operatorCRD "github.com/zondax/vault-k8s-canister/operator/internal/k8s/op-crd"
+	operatorSidecar "github.com/zondax/vault-k8s-canister/operator/internal/k8s/op-sidecar"
 )
 
 func Start(config *conf.Config) {

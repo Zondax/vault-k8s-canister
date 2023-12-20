@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"github.com/zondax/tororu-operator/operator/internal/conf"
-	"github.com/zondax/tororu-operator/operator/internal/service"
+	"github.com/zondax/vault-k8s-canister/operator/internal/conf"
+	"github.com/zondax/vault-k8s-canister/operator/internal/service"
 )
 
 import (

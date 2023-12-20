@@ -2,9 +2,9 @@ package operator
 
 import (
 	"context"
-	"github.com/zondax/tororu-operator/operator/common"
-	"github.com/zondax/tororu-operator/operator/internal/conf"
-	manager2 "github.com/zondax/tororu-operator/operator/internal/k8s/manager"
+	"github.com/zondax/vault-k8s-canister/operator/common"
+	"github.com/zondax/vault-k8s-canister/operator/internal/conf"
+	manager2 "github.com/zondax/vault-k8s-canister/operator/internal/k8s/manager"
 	"os"
 
 	"go.uber.org/zap"

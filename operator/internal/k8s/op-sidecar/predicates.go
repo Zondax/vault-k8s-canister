@@ -1,7 +1,7 @@
 package operator
 
 import (
-	"github.com/zondax/tororu-operator/operator/common"
+	"github.com/zondax/vault-k8s-canister/operator/common"
 	"sigs.k8s.io/controller-runtime/pkg/event"
 	"sigs.k8s.io/controller-runtime/pkg/predicate"
 )

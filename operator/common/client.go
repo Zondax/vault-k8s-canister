@@ -2,7 +2,7 @@ package common
 
 import (
 	"fmt"
-	"github.com/zondax/tororu-operator/operator/common/v1"
+	"github.com/zondax/vault-k8s-canister/operator/common/v1"
 
 	"github.com/zondax/golem/pkg/utils"
 	"go.uber.org/zap"
