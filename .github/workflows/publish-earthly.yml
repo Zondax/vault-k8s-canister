@@ -42,6 +42,7 @@ jobs:
             branch="${GITHUB_REF##*/}"
           fi
           git checkout -b "$branch" || true
+        working-directory: ./operator
 
       - uses: earthly/actions-setup@v1
         with:
@@ -60,12 +61,14 @@ jobs:
           earthly config global.tls_enabled false
           earthly --version
           earthly bootstrap
+        working-directory: ./operator
       - name: Run build (PR)
         # Based on https://docs.github.com/en/actions/learn-github-actions/contexts#example-usage-of-the-github-context
         if: ${{ github.event_name == 'pull_request' }}
         env:
           EARTHLY_PUSH: False
         run: earthly --ci +all
+        working-directory: ./operator
 
       - name: Login to Docker Hub
         if: ${{ github.event_name != 'pull_request' }}
@@ -77,3 +80,4 @@ jobs:
       - name: Run build (branch) and publish
         if: ${{ github.event_name != 'pull_request' }}
         run: earthly --ci --push +all
+        working-directory: ./operator
