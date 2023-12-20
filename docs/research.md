@@ -1,3 +1,8 @@
+---
+title: "Research"
+sidebar_position: 4
+---
+
 # ICP Vault 🔑 :lock: Initial Research 
 
 ## :space_invader: Problem Definition

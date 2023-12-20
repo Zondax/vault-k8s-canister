@@ -1,4 +1,7 @@
-# Sidecar Operator Design
+---
+title: "Operator Sidecar"
+sidebar_position: 2
+---
 
 ```mermaid
 sequenceDiagram

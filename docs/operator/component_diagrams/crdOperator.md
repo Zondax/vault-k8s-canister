@@ -1,4 +1,7 @@
-# CRD Operator
+---
+title: "CRD Operator"
+sidebar_position: 1
+---
 
 ```mermaid
 sequenceDiagram

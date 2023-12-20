@@ -1,4 +1,7 @@
-# Postgres Sidecar
+---
+title: "Postgres Sidecar"
+sidebar_position: 3
+---
 
 ```mermaid
 sequenceDiagram

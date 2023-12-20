@@ -1,4 +1,7 @@
-# Concept
+---
+title: "Concept"
+sidebar_position: 2
+---
 
 ```mermaid
 sequenceDiagram

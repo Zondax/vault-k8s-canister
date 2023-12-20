@@ -1,3 +1,8 @@
+---
+title: "Design"
+sidebar_position: 3
+---
+
 # High level design
 
 ## Components
