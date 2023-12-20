@@ -12,11 +12,20 @@ helm-uninstall:
 NGROK_URL = $(shell curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
 RNDHASH = $(shell head -c 100 /dev/urandom | md5sum | cut -d' ' -f1)
 
+install-cloudflared:
+	brew install cloudflared
+
 tunnel-adm-controller:
-	@ngrok http 8282
+	mkdir -p tmp
+	URL=http://localhost:8282 TUNNEL_URL_FILENAME=tmp/admControllerTunnel.txt make tunnel
 
 tunnel-icp:
-	@ngrok http 4943
+	mkdir -p tmp
+	URL=http://localhost:4943 TUNNEL_URL_FILENAME=tmp/canisterTunnel.txt make tunnel
+
+tunnel:
+	./scripts/tunnel.sh
+
 
 k8s-mock:
 	@echo "NGROK_URL: $(NGROK_URL)"
