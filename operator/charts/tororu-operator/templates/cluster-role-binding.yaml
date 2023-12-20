@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+# This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "tororu-operator.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "tororu-operator.fullname" . }}
+    namespace: {{ .Release.Namespace }}
+    apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: {{ include "tororu-operator.serviceAccountName" . }}
+  apiGroup: rbac.authorization.k8s.io

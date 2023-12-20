@@ -1,0 +1,55 @@
+type CertifiedStatus = record {
+  certificate : opt vec nat8;
+  data : text;
+  pending_secret_reqs : vec Secret;
+  secrets : vec Secret;
+  consumers : vec Consumer;
+  pending_consumer_reqs : vec Consumer;
+};
+type Consumer = record {
+  id : text;
+  creator : text;
+  pending_type : nat8;
+  create_timestamp : text;
+  secret_kube_id : text;
+  update_timestamp : text;
+  permission_type : nat8;
+  kube_id : text;
+};
+type InitArgs = record { admin : principal };
+type Result = variant { Ok; Err : text };
+type Secret = record {
+  id : text;
+  ttl : nat32;
+  creator : text;
+  pending_type : nat8;
+  create_timestamp : text;
+  update_timestamp : text;
+  kube_id : text;
+};
+type User = record {
+  id : principal;
+  creator : text;
+  create_timestamp : text;
+  root : bool;
+  update_timestamp : text;
+};
+service : (InitArgs) -> {
+  add_consumer : (text, text, nat8) -> (Result);
+  add_privileged_user : (principal) -> (Result);
+  add_secret : (text, nat32) -> (Result);
+  add_user : (principal) -> (Result);
+  approve_consumer : (text) -> (Result);
+  approve_secret : (text) -> (Result);
+  get_certified_status : () -> (CertifiedStatus) query;
+  get_users : () -> (vec User) query;
+  remove_privileged_user : (principal) -> (Result);
+  remove_user : (principal) -> (Result);
+  revoke_consumer : (text) -> (Result);
+  revoke_pending_consumer : (text) -> (Result);
+  revoke_pending_secret : (text) -> (Result);
+  revoke_secret : (text) -> (Result);
+  update_consumer : (text, text, nat8) -> (Result);
+  update_secret : (text, nat32) -> (Result);
+  whoami : () -> (text);
+}

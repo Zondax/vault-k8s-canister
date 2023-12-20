@@ -1,0 +1,16 @@
+.idea
+.DS_Store
+
+operator/.idea
+operator/.DS_Store
+operator/output/
+operator/tmp
+
+canister/node_modules
+canister/target
+canister/.idea
+canister/.DS_Store
+canister/dist
+canister/src/declarations
+canister/.dfx
+canister/.env

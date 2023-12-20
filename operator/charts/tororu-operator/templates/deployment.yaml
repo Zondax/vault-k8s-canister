@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tororu-operator.fullname" . }}
+  labels:
+    {{- include "tororu-operator.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "tororu-operator.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "tororu-operator.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "tororu-operator.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /zondax/config
+          env:
+            - name: CANISTER_ID
+              value: {{ .Values.config.canisterId }}
+            - name: ICP_NODE_URL
+              value: {{ .Values.config.icpNodeUrl }}
+            - name: ADM_CONTROLLER_CERT
+              valueFrom:
+                secretKeyRef:
+                  key: ADM_CONTROLLER_CERT
+                  name: {{ include "tororu-operator.fullname" . }}
+            - name: ADM_CONTROLLER_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: ADM_CONTROLLER_KEY
+                  name: {{ include "tororu-operator.fullname" . }}
+          ports:
+            - name: adm-ctrl
+              containerPort: {{ .Values.service.ports.admController }}
+              protocol: TCP
+            - name: op-sidecar
+              containerPort: {{ .Values.service.ports.operatorSidecar }}
+              protocol: TCP
+            - name: op-crd
+              containerPort: {{ .Values.service.ports.operatorCrd }}
+              protocol: TCP
+            - name: metrics
+              containerPort: {{ .Values.metrics.port }}
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "tororu-operator.fullname" . }}

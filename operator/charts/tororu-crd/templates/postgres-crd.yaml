@@ -1,0 +1,9 @@
+{{- range $nameSuffix, $data := .Values.crds }}
+---
+apiVersion: "zondax.io/v1"
+kind: TororuResource
+metadata:
+  name: {{ $nameSuffix }}
+spec:
+  {{- toYaml $data.spec | nindent 2 }}
+{{- end }}

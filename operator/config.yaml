@@ -1,0 +1,4 @@
+dev:
+  kubeconfig: "~/.kube/config"
+  admController:
+    port: 8282

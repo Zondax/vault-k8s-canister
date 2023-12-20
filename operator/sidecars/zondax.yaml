@@ -1,0 +1,8 @@
+projectName: sidecars
+templates:
+  - template: templates/golem
+  - template: templates/publish-earthly
+ignore:
+  - go.mod
+  - internal/conf/config.go
+  - internal/service/service.go

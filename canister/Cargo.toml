@@ -1,0 +1,4 @@
+[workspace]
+members = [
+    "src/vault_poc_backend",
+]

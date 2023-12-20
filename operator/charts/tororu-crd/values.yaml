@@ -1,0 +1,17 @@
+crds:
+  postgres-user-prateek:
+    spec:
+      kind: "tororu.zondax.io/postgres"
+      rotate: 300
+      config: |
+        databases:
+          - name: zevm_mainnet
+            user: prateek
+  postgres-user-juan:
+    spec:
+      kind: "tororu.zondax.io/postgres"
+      rotate: 300
+      config: |
+        databases:
+          - name: zevm_calibration
+            user: juan

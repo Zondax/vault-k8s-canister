@@ -1,0 +1,26 @@
+# mutating-webhook.yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: webhook.zondax.io
+  annotations:
+    tororu.io/hash: "404b6581fc5d81f3e05b1a25b5df269c"
+webhooks:
+  - name: webhook.zondax.io
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    clientConfig:
+      service:
+        path: "/"
+        namespace: {{ .Release.Namespace }}
+        name: {{ include "tororu-operator.fullname" . }}
+        port: {{ .Values.service.ports.admController }}
+      caBundle: {{ .Values.config.admControllerHttpsCA }}
+    rules:
+      - operations: ["CREATE", "UPDATE"]
+        apiGroups: [""]
+        apiVersions: ["v1"]
+        resources: ["pods"]
+        #    failurePolicy: Fail
+    failurePolicy: Ignore
+    timeoutSeconds: 10

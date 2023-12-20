@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tororu-operator.fullname" . }}
+  labels:
+    {{- include "tororu-operator.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.ports.operatorCrd }}
+      targetPort: op-crd
+      protocol: TCP
+      name: op-crd
+    - port: {{ .Values.service.ports.operatorSidecar }}
+      targetPort: op-sidecar
+      protocol: TCP
+      name: op-sidecar
+    - port: {{ .Values.service.ports.admController }}
+      targetPort: adm-ctrl
+      protocol: TCP
+      name: adm-ctrl
+    - port: {{ .Values.metrics.port }}
+      targetPort: metrics
+      protocol: TCP
+      name: metrics
+  selector:
+    {{- include "tororu-operator.selectorLabels" . | nindent 4 }}

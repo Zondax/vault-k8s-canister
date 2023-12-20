@@ -1,0 +1,11 @@
+apiVersion: "zondax.io/v1"
+kind: TororuResource
+metadata:
+  name: postgres-user-juan
+spec:
+  kind: "tororu.zondax.io/postgres"
+  rotate: 300
+  config: |
+    databases:
+    - name: zevm_calibration
+      user: juan
