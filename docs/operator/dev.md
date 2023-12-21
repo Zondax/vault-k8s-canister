@@ -23,8 +23,8 @@ Please have a look the sequence diagrams in `components_diagrams` folder to lear
 ## Steps
 
 1. Local cluster: minikube/k3d/kind
-
-   - If required to start a new cluster using config, you can do it using the `k8s/mock2/clusterWithWebhookRegistration/kinDCluster.yaml`
+    - If required to start a new cluster using config, you can do it using the `k8s/mock2/clusterWithWebhookRegistration/kinDCluster.yaml`
+1. Build the postgres sidecar image by running `make build-sidecars`
 
 ### Running local
 1. Store the cluster config at `~/.kube/config`
@@ -47,13 +47,21 @@ Please have a look the sequence diagrams in `components_diagrams` folder to lear
 
 To run a complete demo, please follow these steps after you finish the previous setup.
 
+### Option A: Using manifests
 - Create a tororu resource:
-  1. Run `kubectl apply -f k8s/mock2/tororu-api/tororu-crd.yaml`
-  1. Check the result under Custom Resources on lens
+    1. Run `kubectl apply -f k8s/mock2/tororu-api/tororu-crd.yaml`
+    1. Check the result under Custom Resources on lens
 - Create two new CRDs:
-  1. Prateek's secret: `kubectl apply -f k8s/mock2/postgres-crd-1.yaml`
-  1. Juan's secret: `kubectl apply -f k8s/mock2/postgres-crd-2.yaml`
-- Build the postgres sidecar image by running `make build-sidecars`
+    1. Prateek's secret: `kubectl apply -f k8s/mock2/postgres-crd-1.yaml`
+    1. Juan's secret: `kubectl apply -f k8s/mock2/postgres-crd-2.yaml`
+
+### Option B:  Using helm charts
+- Create a tororu resource, deploying two new CRDs:
+    1. Run `make install-crds`
+    1. Check the result under Custom Resources on lens
+
+
+### Creating RW and RO consumers
 - Create a pvc `kubectl apply -f k8s/mock2/persistantVolume.yaml`
 - Deploy the postgres server `kubectl apply -f k8s/mock2/postgres-server.yaml`
 - Deploy the postgres client `kubectl apply -f k8s/mock2/postgres-client.yaml`
